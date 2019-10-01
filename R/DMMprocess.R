@@ -5,8 +5,8 @@
 #' dissipation efficiency factors and rheological stability coefficients in current conditions
 #' will be returned.
 #' @param x A strain rate-temperature table, returned from \code{\link[TPMplt:epsExtract]{epsExtract}}.
-#' @param lgbase A numeric value to specify the base of all logarithm calculations during building model.
-#' The default value uses exp(1).
+#' @param lgbase A numeric value to specify the base of the logarithm calculations for processing map.
+#' The default value uses 10.
 #' @param InteractMode A boolean value to control figures' output and the printout of related constants
 #' during calculations. Default value FALSE means all fitting plots will not be outputed. If these outputs
 #' are necessary, set this parameter as TRUE then follow the prompt messages.
@@ -44,7 +44,7 @@
 #' }
 #'
 #' @keywords DMMprocess DMMresult epsExtract
-DMMprocess <- function(x, lgbase=exp(1), InteractMode=FALSE, ConsFunc=FALSE, legendcex=0.65, legendloc="bottomright"){
+DMMprocess <- function(x, lgbase=10, InteractMode=FALSE, ConsFunc=FALSE, legendcex=0.65, legendloc="bottomright"){
 
   # check the input data
   if(class(x)!="SR-T.table"){
@@ -58,7 +58,11 @@ DMMprocess <- function(x, lgbase=exp(1), InteractMode=FALSE, ConsFunc=FALSE, leg
   eps <- x$epsilon
   x <- x$SRT.table
 
-  logbase <- lgbase
+  if(ConsFunc==TRUE){
+    logbase <- exp(1)
+  } else{
+    logbase <- lgbase
+  }
 
   dims <- dim(x)
   SR <- as.numeric(rownames(x))
@@ -145,7 +149,7 @@ DMMprocess <- function(x, lgbase=exp(1), InteractMode=FALSE, ConsFunc=FALSE, leg
             par(new=TRUE)
           }
         }
-        cat("Mean value of beta.Stress.Index calculated from flow_stress vs. log_strain_rate fitting is", n.StressInd,"\n")
+        cat("Mean value of beta.Stress.Index calculated from flow_stress vs. log_strain_rate fitting is", beta.StressInd,"\n")
         invisible(readline(prompt="Press [enter] to continue"))
       }
     }
@@ -300,50 +304,6 @@ DMMprocess <- function(x, lgbase=exp(1), InteractMode=FALSE, ConsFunc=FALSE, leg
 
     Q.ActivEnerg <- Q*0.001 # Unit: kJ/mol
 
-    # ##### Fitting Mode for Temperature correction #####
-    # scatter_mat <- matrix(NA, nrow = dims[1], ncol = dims[2])
-    # T_1 <- 1/(as.numeric(colnames(x)) + 273.15) # Convert to Kelvin
-    # lmlist <- list(list())[rep(1,dims[1])]
-    # for (i in 1:dims[1]) {
-    #   scatter_mat[i,] <- as.numeric(x[i,])
-    #   a <- T_1
-    #   lmlist[[i]] <- lm(scatter_mat[i,]~I(a^1))
-    # }
-    #
-    # temp_vec <- c()
-    # for (i in 1:dims[1]) {
-    #   a <- as.numeric(lmlist[[i]][[1]][2])
-    #   temp_vec <- append(temp_vec, a)
-    # }
-    #
-    # Slope <- temp_vec
-    # Tcorr.Mode <- lmlist
-    #
-    # if(InteractMode == TRUE){
-    #   cat("Show fitting plot of log_flow_stress vs. 1/T(K^-1)?")
-    #   ptr <- select.list(c("Yes", "No"))
-    #   if(ptr == "Yes"){
-    #     legendvec <- rownames(x)
-    #     yscale <- c(min(unlist(scatter_mat)), max(unlist(scatter_mat)))
-    #     xscale <- c(min(T_1), max(T_1))
-    #
-    #     labx <- "1/T(K^-1)"
-    #     laby <- expression(paste("log(", sigma, "/MPa)", sep = ""))
-    #
-    #     for(i in 1:dims[1]){
-    #       plot(T_1, scatter_mat[i,], type = "p", col = clrvec[i], pch=16, xlim = xscale, ylim = yscale, xlab = labx, ylab = laby)
-    #       lines(x=T_1, y=predict(lmlist[[i]]), col = clrvec[i], xlim = xscale, ylim = yscale, xlab = labx, ylab = laby)
-    #       if (i == dims[1]){
-    #         legend(legendloc,legend = legendvec, fill = clrvec[1:dims[2]], cex = legendcex, bg = "transparent", box.lty = 0)
-    #         par(new=FALSE)
-    #       } else {
-    #         par(new=TRUE)
-    #       }
-    #     }
-    #     cat("Values of Slope calculated from log(flow_stress) vs. 1/T(K^-1) is", Slope,"respectively\n")
-    #     invisible(readline(prompt="Press [enter] to continue"))
-    #   }
-    # }
 
     if(ConsFunc){
       cat("Constitutive equation in", eps, "strain:\nEpsilon=A{[sinh(Alpha*Sigma)]^n}*exp[-Q/(RT)]\nWhere A =",
@@ -353,6 +313,9 @@ DMMprocess <- function(x, lgbase=exp(1), InteractMode=FALSE, ConsFunc=FALSE, leg
     }
     paras <- list(A = A, alpha = alpha.StressInd, n = n.Power, Q = Q.ActivEnerg, base = logbase, epsilon.strain = eps, Tcorr.n = n.StressInd) #, Tcorr.Mode = Tcorr.Mode)
   }
+
+  # recover logarithm base
+  logbase <- lgbase
 
   scatter_mat <- matrix(NA, nrow = dims[2], ncol = dims[1])
   lmlist <- list(list())[rep(1,dims[2])]
@@ -401,7 +364,7 @@ DMMprocess <- function(x, lgbase=exp(1), InteractMode=FALSE, ConsFunc=FALSE, leg
     for (j in 1:dims[2]) { # max j = 7
       bcd <- Coef_mat[j,c(2:4)] # d3 vector
       lgstr <- lgSR[i]
-      m.table[i,j] <- abs(bcd[1]+2*bcd[2]*lgstr+3*bcd[3]*(lgstr^2)) # Add abs!
+      m.table[i,j] <- bcd[1]+2*bcd[2]*lgstr+3*bcd[3]*(lgstr^2) # Add abs?
       above.table[i,j] <- 6*lgstr*bcd[3] + 2*bcd[2] # for xi
     }
   }
