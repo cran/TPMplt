@@ -4,8 +4,14 @@
 \alias{DMMprocess}
 \title{Dynamic material modeling from strain rate temperature table}
 \usage{
-DMMprocess(x, lgbase = 10, InteractMode = FALSE, ConsFunc = FALSE,
-  legendcex = 0.65, legendloc = "bottomright")
+DMMprocess(
+  x,
+  lgbase = 10,
+  InteractMode = FALSE,
+  ConsFunc = FALSE,
+  legendcex = 0.65,
+  legendloc = "bottomright"
+)
 }
 \arguments{
 \item{x}{A strain rate-temperature table, returned from \code{\link[TPMplt:epsExtract]{epsExtract}}.}
@@ -43,16 +49,16 @@ epstable <- epsExtract(TPMdata, 0.7, 2, 3)
 
 # Without calculation for constitutive equation
 DMM <- DMMprocess(epstable)
-print(DMM)
+message(DMM)
 
-\dontrun{
 # Calculating for constitutive equation but
 # Without plots printout.
 DMM <- DMMprocess(epstable, ConsFunc=TRUE)
-print(DMM)
+message(DMM)
 
 # Calculating for constitutive equation and
-# required fitting plots printout.
+# required fitting plots printout. (message and selection in prompt)
+\dontrun{
 DMMprocess(epstable, InteractMode=TRUE, ConsFunc=TRUE)
 }
 
