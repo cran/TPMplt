@@ -1,11 +1,11 @@
-2bae78b5f4877e9ca22ebef6de2dfad9 *DESCRIPTION
+90ddcb50c1147eb200cc2212098e90c4 *DESCRIPTION
 b8078704064ca06aa2d5f2b5ab2dafc9 *NAMESPACE
 e7ba56a54f44c2835c880e3a43daafd7 *R/DMMprocess.R
 c3a14a1693703440e58135a16d2ed5aa *R/PLTblder.R
 1b4e5cf5ff769eaf7a55f8c8f2ec2dd0 *R/PrePLT.R
 47f8fe423422f09d378b3b73ed21a9b1 *R/SSplots.R
 38903a1332cb59e087b04ae15904f8a0 *R/TCorrect.R
-ecfd9fc97a26d22e2ebbc519ff72e9a5 *R/TMZtester.API.R
+2147e43b54f4fe1b6651e652cbde591e *R/TMZtester.API.R
 07473e71efe890e686be3c935521eab3 *R/TPMdata.R
 6a617d40685b16032c998c2c2cda39f3 *R/TPMplt-package.r
 c56b67b07cfb39d80022b07247078992 *R/TPMplt.R
@@ -16,8 +16,8 @@ a08a42d7fe1b62b72045d330af131afc *README.md
 7f6a9aa3cdd44dbc583075c9a8a8613c *data/TPMdata.rda
 2944da6c151002957e2890ab3d92d6c2 *inst/doc/TPMplt-vignette.R
 8c73e8adb3e4b3d118b0a6b058430922 *inst/doc/TPMplt-vignette.Rmd
-5641f17c5e4363a9f008a4cdd861f10d *inst/doc/TPMplt-vignette.html
-b8a23dc922782fc9e3d78e5305bba0d3 *man/API4TMZ.Rd
+b60ce9549b2411c7e8d5757eaf79235b *inst/doc/TPMplt-vignette.html
+a3c5ffcab207e646285ccad72372f86c *man/API4TMZ.Rd
 73fa529b28e22ccce1e580647276ca39 *man/Abstract-TPMplt.Rd
 7215208c3a38739a020466734c58cae7 *man/DMMprocess.Rd
 8ef331538a0380cb9f61c3bf4ba3da39 *man/KFprocess.Rd

@@ -5,7 +5,7 @@
 #' correct setting.
 #' @param Cdl An handmade double list to determine selected conditions.
 #' @param wd Work directory.
-#' @param ftype File type to be read. Defaust setting is ".csv".
+#' @param ftype File type to be read. Default value is ".csv".
 #' @param Straincln An integer to specify column for Strain in your data. Default value
 #' is 7 means the 7th column contains strain data, in the files exported from Thermec
 #' Master-Z tester.
