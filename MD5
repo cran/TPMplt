@@ -1,7 +1,7 @@
-41f4086bac90644a362973dc14b09f7c *DESCRIPTION
-b8078704064ca06aa2d5f2b5ab2dafc9 *NAMESPACE
+6e58185113ecb2b9c391518f83af62ca *DESCRIPTION
+1f698274ad1138297b3cc3bc087bfa76 *NAMESPACE
 e7ba56a54f44c2835c880e3a43daafd7 *R/DMMprocess.R
-c3a14a1693703440e58135a16d2ed5aa *R/PLTblder.R
+7b0aba6909f59634321d41d5ba9722a0 *R/PLTblder.R
 1b4e5cf5ff769eaf7a55f8c8f2ec2dd0 *R/PrePLT.R
 47f8fe423422f09d378b3b73ed21a9b1 *R/SSplots.R
 38903a1332cb59e087b04ae15904f8a0 *R/TCorrect.R
@@ -16,7 +16,7 @@ a08a42d7fe1b62b72045d330af131afc *README.md
 7f6a9aa3cdd44dbc583075c9a8a8613c *data/TPMdata.rda
 2944da6c151002957e2890ab3d92d6c2 *inst/doc/TPMplt-vignette.R
 8c73e8adb3e4b3d118b0a6b058430922 *inst/doc/TPMplt-vignette.Rmd
-1e0c0019bda0a0038b3683286b19fb1b *inst/doc/TPMplt-vignette.html
+51d77e6cf88d1152e6afda6b89c247b5 *inst/doc/TPMplt-vignette.html
 a3c5ffcab207e646285ccad72372f86c *man/API4TMZ.Rd
 73fa529b28e22ccce1e580647276ca39 *man/Abstract-TPMplt.Rd
 7215208c3a38739a020466734c58cae7 *man/DMMprocess.Rd

@@ -1,8 +1,8 @@
 Package: TPMplt
 Type: Package
 Title: Tool-Kit for Dynamic Materials Model and Thermal Processing Maps
-Version: 0.1.6
-Date: 2024-10-01
+Version: 0.1.7
+Date: 2025-07-25
 Authors@R: c(person("Chen", "Zhang", role=c("aut", "cre", "cph"),
  email="chen.zhang_06sept@foxmail.com", comment=c(ORCID="0009-0007-7689-5030")),
  person("Huakang", "Bian", role=c("ctb"), email="bianhuakang@shu.edu.cn"),
@@ -28,11 +28,12 @@ Depends: R (>= 2.10)
 Suggests: testthat, knitr, rmarkdown
 VignetteBuilder: knitr
 NeedsCompilation: no
-Packaged: 2024-10-01 07:23:45 UTC; Chen
-Author: Chen Zhang [aut, cre, cph] (<https://orcid.org/0009-0007-7689-5030>),
+Packaged: 2025-07-25 13:18:07 UTC; Chen
+Author: Chen Zhang [aut, cre, cph] (ORCID:
+    <https://orcid.org/0009-0007-7689-5030>),
   Huakang Bian [ctb],
-  Kenta Yamanaka [ths] (<https://orcid.org/0000-0003-1675-4731>),
+  Kenta Yamanaka [ths] (ORCID: <https://orcid.org/0000-0003-1675-4731>),
   Akihiko Chiba [ths]
 Maintainer: Chen Zhang <chen.zhang_06sept@foxmail.com>
 Repository: CRAN
-Date/Publication: 2024-10-01 13:20:05 UTC
+Date/Publication: 2025-07-25 13:30:02 UTC
